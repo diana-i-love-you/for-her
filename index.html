@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Для тебя</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: white;
+            font-family: "Inter", Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 900px;
+            margin-top: 20px;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 12px;
+            outline: none;
+        }
+
+        .text-block {
+            max-width: 900px;
+            padding: 0px;
+            margin-top: 10px;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 2s ease forwards;
+            animation-delay: 1s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Галерея для двух картинок */
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            margin-bottom: 50px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* Картинки */
+        .image-gallery img {
+            width: 100%;
+            max-width: 280px; /* 900px / 3 - gap — идеально 3 в ряд */
+            border-radius: 12px;
+            object-fit: cover;
+            box-shadow: 0 0 15px rgba(255, 90, 120, 0.28);
+        }
+
+        /* Для планшетов (2 в ряд) */
+        @media (max-width: 900px) {
+            .image-gallery img {
+                max-width: 45%;
+            }
+        }
+
+        /* Для телефонов (1 в ряд) */
+        @media (max-width: 600px) {
+            .image-gallery img {
+                max-width: 100%;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="text-block">
+        Это для тебя, принцесса😓
+    </div>
+    <div class="text-block">Просто посмотри видео...</div>
+    <div class="video-container">
+        <video id="v" controls autoplay playsinline>
+            <source src="video\Прости меня, Диана.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div style="padding-bottom: 60px; margin-top: 0;" class="text-block" >
+        Посмотри чуточку ниже 👉👈 ⬇️
+    </div>
+
+    <div style="padding: 0; margin-top: 0;" class="text-block" >Хоть монтаж и не моё, но для тебя я сверну горы, только дай мне шанс</div>
+    <div style="padding: 0; margin-top: 0;" class="text-block" >А если и не дашь, то буду добиваться, ждать, хоть 5, хоть 10 лет</div>
+    <div style="padding: 0; margin-top: 0;" class="text-block" >Потому что буду ненавидеть каждый день своей жизни без тебя</div>
+    <div class="text-block">
+        Я сделаю всё по другому, я клянусь... 
+        Ты будешь мамой и женой, но той, которая получит счастье от меня, мы всё пройдем и сделаем на этот раз всё правильно
+    </div>
+    <div class="text-block" style="padding: 20px 0; font-size: 2rem; color: #ff9bb3; text-align: center; font-weight: 700; text-shadow: 0 0 12px rgba(255, 90, 120, 0.6);">
+    Я тебя люблю, Диана!
+    </div>
+    <div style="padding-bottom: 60px; margin-top: 0;" class="text-block" >Прошу, вернись родная, я не был слеп так никогда</div>
+    <div class="image-gallery">
+        <img style="object-position: 70% center; transform-origin: center;" src="photo/photo_1.jpg" alt="Фото 1">
+        <img src="photo/photo_2.jpg" alt="Фото 2">
+        <img src="photo/photo_3.png" alt="Фото 3, продолжение">
+    </div>
+    
+<script>
+    function openFullscreen(el) {
+        if (el.requestFullscreen) el.requestFullscreen();
+        else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+        else if (el.msRequestFullscreen) el.msRequestFullscreen();
+    }
+
+    const video = document.getElementById("v");
+
+    const tryFull = () => openFullscreen(video);
+
+    video.addEventListener("click", tryFull, { once: true });
+    video.addEventListener("touchstart", tryFull, { once: true });
+
+    window.onload = () => {
+        setTimeout(() => {
+            video.play().catch(()=>{});
+            tryFull();
+        }, 500);
+    };
+</script>
+
+</body>
+</html>
